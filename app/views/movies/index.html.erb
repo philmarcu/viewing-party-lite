@@ -6,13 +6,11 @@
         <p><%= link_to m.title, "/users/#{@user.id}/movies/#{m.id}", method: :get, local: true %> - Rating <%= m.vote_average %></p>
       <% end %>
   <% else %>
-  <h2>Movie Results for: <%= "#{@query}" %></h2>
-
-  <b><%= @search.size %> Total Results</b>
-
-  <% @search.each_with_index do |m, idx| %>
-    <div id="result-<%= idx %>">
-      <p><%= link_to m.title, "/users/#{@user.id}/movies/#{m.id}" %> - Rated <%= m.vote_average %></p>
-    </div>
+    <h2>Movie Results for: <%= "#{@query}" %></h2>
+    <b><%= @search.size %> Total Results</b>
+      <% @search.each_with_index do |m, idx| %>
+          <div id="result-<%= idx %>">
+            <p><%= link_to m.title, "/users/#{@user.id}/movies/#{m.id}" %> - Rated <%= m.vote_average %></p>
+          </div>
+      <% end %>
   <% end %>
-<% end %>

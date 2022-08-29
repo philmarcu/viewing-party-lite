@@ -18,9 +18,6 @@ class MovieService
     data = response.map do |r|
       JSON.parse(r.body, symbolize_names: true)
     end
-    data.flat_map do |d|
-      d[:results]
-    end
   end
 
   def self.credits(movie_id)

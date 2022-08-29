@@ -14,9 +14,11 @@ class MovieFacade
   end
 
   def self.search(query)
-    results = MovieService.search(query)
-    results.map do |movie_data|
-      Movie.new(movie_data)
+    data_arr = MovieService.search(query)
+    data_arr.flat_map do |data|
+      data[:results].map do |movie_data|
+        Movie.new(movie_data)
+      end
     end
   end
 

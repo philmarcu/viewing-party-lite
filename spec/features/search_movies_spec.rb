@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe 'Movie Search' do
@@ -13,12 +11,12 @@ RSpec.describe 'Movie Search' do
 
     expect(page.status_code).to eq(200)
     expect(page).to have_content('40 Total Results')
-
+    expect(page).to have_css("div", count: 40)
     within '#result-0' do
-      expect(page).to have_content('Something Borrowed')
+      expect(page).to have_content('Something the Lord Made - Rated 7.8')
     end
     within '#result-1' do
-      expect(page).to have_content("There's Something About Mary")
+      expect(page).to have_content("Something Borrowed - Rated 6.3")
     end
   end
 end

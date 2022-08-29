@@ -18,7 +18,7 @@ RSpec.describe 'MovieService' do
   it 'searches for movies by user input and returns array of movies', :vcr do
     query = 'something'
     search = MovieService.search(query)
-    movie = search.first
+    movie = search.first[:results][0]
 
     expect(search).to be_a Array
     expect(movie).to be_a Hash

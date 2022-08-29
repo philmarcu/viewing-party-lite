@@ -39,7 +39,7 @@ RSpec.describe 'User Dashboard' do
 
       expect(page).to have_content('Something Borrowed')
       expect(page).to have_content('7:00PM')
-      expect(page).to have_content('2022-08-26 00:00:00 UTC')
+      expect(page).to have_content("#{Date.today}")
     end
   end
 end

@@ -13,11 +13,8 @@ class UsersController < ApplicationController
 
   def create
     new_user = User.create(user_params)
-    if params[:name].empty? || params[:email].empty? || params[:password].empty?
+    if params_check(new_user) == false
       flash[:alert] = "Error - #{new_user.errors.full_messages}"
-      redirect_to "/users/#{User.last.id}"
-    elsif params[:password] != params[:password_confirmation]
-      flash[:alert] = "Error - Passwords must match"
       redirect_to "/users/#{User.last.id}"
     else
       flash[:success] = "Welcome #{new_user.name}"
@@ -29,5 +26,15 @@ class UsersController < ApplicationController
 
   def user_params
     params.permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def params_check(user)
+    if user.password != user.password_confirmation
+      false
+    elsif user.name.empty? || user.email.empty? || user.password.empty?
+      false
+    else
+      true
+    end
   end
 end

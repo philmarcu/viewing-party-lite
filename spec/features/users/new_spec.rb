@@ -39,7 +39,7 @@ RSpec.describe 'register page page' do
       fill_in 'Password Confirmation', with: 'wrong_pwd'
       click_on('Submit')
 
-      expect(page).to have_content("Error - Passwords must match")
+      expect(page).to have_content("Password confirmation doesn't match Password")
     end
   end
 end

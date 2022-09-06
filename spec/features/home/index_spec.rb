@@ -4,8 +4,8 @@ require 'rails_helper'
 
 RSpec.describe 'home page' do
   before :each do
-    @user1 = User.create!(name: 'Jim Bob', email: 'jimb@viewingparty.com')
-    @user2 = User.create!(name: 'Cary Berry', email: 'caryb@viewingparty.com')
+    @user1 = User.create!(name: 'Jim Bob', email: 'jimb@viewingparty.com', password: "pwd")
+    @user2 = User.create!(name: 'Cary Berry', email: 'caryb@viewingparty.com', password: "pwd")
 
     visit root_path
   end

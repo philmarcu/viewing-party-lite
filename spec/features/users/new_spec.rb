@@ -25,11 +25,12 @@ RSpec.describe 'register page page' do
     it 'displays an error message if user fails to fill in parameters' do
       fill_in 'Name', with: nil
       fill_in 'Email', with: 'tater@gmail.com'
-      fill_in 'Password', with: 'pwd'
+      fill_in 'Password', with: ''
       fill_in 'Password Confirmation', with: 'pwd'
       click_on('Submit')
 
       expect(page).to have_content("Name can't be blank")
+      expect(page).to have_content("Password can't be blank")
     end
 
     it 'displays error message if passwords do not match' do

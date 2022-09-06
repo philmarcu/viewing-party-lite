@@ -32,4 +32,10 @@ RSpec.describe 'home page' do
     end
     expect(page).to have_content("Jim Bob's Dashboard")
   end
+
+  it 'has a log-in link for users' do
+    click_on "Log In"
+
+    expect(page).to have_current_path(login_path)
+  end
 end

@@ -1,8 +1,6 @@
 <%= "#{@movie.title}" %>
 <p><%= link_to "New Viewing Party For #{@movie.title}", "/users/#{@user.id}/movies/#{@movie.id}/event/new" %></p>
-
 <%= button_to "Discover Movies",  "/users/#{@user.id}/discover", method: :get, local: true %>
-
 <%= button_to "Create a Viewing Party" %>
 
 <p>Title: <%= "#{@movie.title}" %></p>
@@ -13,7 +11,7 @@
 <p>Genres: <% @movie.genre_name.each do |g| %>
             <%= g %>
             <% end %></p>
-<p>Cast: <%= @moviecast.cast_name.each do |c| %>
+<p>Cast: <%= @cast.cast_name.each do |c| %>
             <% c %>
           <% end %></p>
 <p></p>

@@ -4,10 +4,10 @@ require 'rails_helper'
 
 RSpec.describe 'Event New Page' do
   before :each do
-    @user1 = User.create!(name: 'Jim Bob', email: 'jimb@viewingparty.com')
-    @user2 = User.create!(name: 'Cary Berry', email: 'caryb@viewingparty.com')
-    @user3 = User.create!(name: 'Michael Cane', email: 'my@kokane.com')
-    @user4 = User.create!(name: 'Leroy Jenkins', email: 'leeeroyyyyyy@hotmail.com')
+    @user1 = User.create!(name: 'Jim Bob', email: 'jimb@viewingparty.com', password: "pwd")
+    @user2 = User.create!(name: 'Cary Berry', email: 'caryb@viewingparty.com', password: "pwd")
+    @user3 = User.create!(name: 'Michael Cane', email: 'my@kokane.com', password: "pwd")
+    @user4 = User.create!(name: 'Leroy Jenkins', email: 'leeeroyyyyyy@hotmail.com', password: "pwd")
     @movie = MovieFacade.movie_details(49_022)
   end
 

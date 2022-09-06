@@ -4,8 +4,8 @@ require 'rails_helper'
 
 RSpec.describe 'home page' do
   before :each do
-    @user1 = User.create!(name: 'Jim Bob', email: 'jimb@viewingparty.com')
-    @user2 = User.create!(name: 'Cary Berry', email: 'caryb@viewingparty.com')
+    @user1 = User.create!(name: 'Jim Bob', email: 'jimb@viewingparty.com', password: "pwd")
+    @user2 = User.create!(name: 'Cary Berry', email: 'caryb@viewingparty.com', password: "pwd")
 
     visit root_path
   end
@@ -31,5 +31,11 @@ RSpec.describe 'home page' do
       expect(current_path).to eq("/users/#{@user1.id}")
     end
     expect(page).to have_content("Jim Bob's Dashboard")
+  end
+
+  it 'has a log-in link for users' do
+    click_on "Log In"
+
+    expect(page).to have_current_path(login_path)
   end
 end

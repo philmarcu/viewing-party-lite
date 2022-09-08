@@ -20,6 +20,9 @@ RSpec.describe 'home page' do
 
     expect(page).to have_current_path(login_path)
     expect(page).to_not have_current_path(logout_path)
+    expect(find('form')).to have_content('Email')
+    expect(find('form')).to have_content('Password')
+    expect(find('form')).to have_content('Confirm Password')
   end
 
   it 'has a log-out link for users' do

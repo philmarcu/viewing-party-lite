@@ -3,12 +3,22 @@
 require 'rails_helper'
 
 RSpec.describe 'User Dashboard' do
+  def login(user)
+    visit root_path
+    click_on "Log In"
+    fill_in :email, with: user.email
+    fill_in :password, with: user.password
+    fill_in :password_confirmation, with: user.password
+    click_on "Log In"
+  end
+
   context 'user discover movie button' do
     it 'has a button to discover movies' do
       user1 = User.create!(name: 'Jim Bob', email: 'jimb@viewingparty.com', password: "pwd")
       user2 = User.create!(name: 'Cary Berry', email: 'caryb@viewingparty.com', password: "pwd")
 
-      visit user_path(user1.id)
+      login(user1)
+      # visit user_path(user1.id)
 
       expect(page).to have_content("Jim Bob's Dashboard")
       expect(page).to_not have_content("Cary Berry's Dashboard")
@@ -17,8 +27,9 @@ RSpec.describe 'User Dashboard' do
 
     it 'can take you to the discover movie page from a users dashboard' do
       user1 = User.create!(name: 'Jim Bob', email: 'jimb@viewingparty.com', password: "pwd")
-
-      visit user_path(user1.id)
+      
+      login(user1)
+      # visit user_path(user1.id)
 
       curr_path = user_discover_path(user1.id)
 
@@ -35,11 +46,21 @@ RSpec.describe 'User Dashboard' do
       event = Event.create!(duration: 112, day: Date.today, start_time: '7:00PM', movie_title: 'Something Borrowed')
       user_event = UserEvent.create!(user_id: user1.id, event_id: event.id)
 
-      visit user_path(user1.id)
+      login(user1)
+      # visit user_path(user1.id)
 
       expect(page).to have_content('Something Borrowed')
       expect(page).to have_content('7:00PM')
       expect(page).to have_content("#{Date.today}")
+    end
+  end
+
+  context 'sad path' do
+    it 'will not show dashboard if invalid access' do
+      user1 = User.create!(name: 'Jim Bob', email: 'jimb@viewingparty.com', password: "pwd")
+      
+      visit user_path(user1.id)
+      expect(page).to have_content("Invalid access to page, must be logged in")
     end
   end
 end

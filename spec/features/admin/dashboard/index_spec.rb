@@ -8,15 +8,6 @@ RSpec.describe 'Admin Dashboard User index page' do
     visit admin_dashboard_path
   end
 
-  def login(user)
-    visit root_path
-    click_on "Log In"
-    fill_in :email, with: user.email
-    fill_in :password, with: user.password
-    fill_in :password_confirmation, with: user.password
-    click_on "Log In"
-  end
-
   it 'title of application, links to existing user, button to create a new user' do
     expect(page).to have_content('Viewing Party Lite')
     expect(page).to have_link('jimb@viewingparty.com')

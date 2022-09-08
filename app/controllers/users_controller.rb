@@ -28,8 +28,16 @@ class UsersController < ApplicationController
   def user_params
     params.permit(:name, :email, :password, :password_confirmation)
   end
-  
 end
+
+# --- not sure how to implement require_user action ---#
+
+# def require_user
+#   if !current_user
+#     redirect_to root_path
+#     flash[:alert] = "Invalid access to page, must be logged in"
+#   end
+# end
 
 # --- attempting helper methods for login verification --- #
 

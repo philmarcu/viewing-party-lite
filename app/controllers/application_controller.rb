@@ -2,15 +2,14 @@
 
 class ApplicationController < ActionController::Base
   helper_method :current_user, 
-                :current_admin, 
-                :require_user
+                :current_admin 
 
   def current_user
     User.find(session[:user_id]) if session[:user_id]
   end
 
   def current_admin
-    redirect_to(root_path) unless current_user&.admin?
+    current_user&.admin?
   end
 
   def home; end

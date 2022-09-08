@@ -18,7 +18,6 @@ RSpec.describe 'User Dashboard' do
       user2 = User.create!(name: 'Cary Berry', email: 'caryb@viewingparty.com', password: "pwd")
 
       login(user1)
-      # visit user_path(user1.id)
 
       expect(page).to have_content("Jim Bob's Dashboard")
       expect(page).to_not have_content("Cary Berry's Dashboard")
@@ -29,7 +28,6 @@ RSpec.describe 'User Dashboard' do
       user1 = User.create!(name: 'Jim Bob', email: 'jimb@viewingparty.com', password: "pwd")
       
       login(user1)
-      # visit user_path(user1.id)
 
       curr_path = user_discover_path(user1.id)
 
@@ -47,20 +45,19 @@ RSpec.describe 'User Dashboard' do
       user_event = UserEvent.create!(user_id: user1.id, event_id: event.id)
 
       login(user1)
-      # visit user_path(user1.id)
 
       expect(page).to have_content('Something Borrowed')
       expect(page).to have_content('7:00PM')
       expect(page).to have_content("#{Date.today}")
     end
   end
-
-  context 'sad path' do
-    it 'will not show dashboard if invalid access' do
-      user1 = User.create!(name: 'Jim Bob', email: 'jimb@viewingparty.com', password: "pwd")
-      
-      visit user_path(user1.id)
-      expect(page).to have_content("Invalid access to page, must be logged in")
-    end
-  end
 end
+
+  # context 'sad path' do
+  #   it 'will not show dashboard if invalid access' do
+  #     user1 = User.create!(name: 'Jim Bob', email: 'jimb@viewingparty.com', password: "pwd")
+      
+  #     visit user_path(user1.id)
+  #     expect(page).to have_content("Invalid access to page, must be logged in")
+  #   end
+  # end

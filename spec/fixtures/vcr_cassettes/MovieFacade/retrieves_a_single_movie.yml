@@ -52,15 +52,15 @@ http_interactions:
       X-Cache:
       - Hit from cloudfront
       Via:
-      - 1.1 6c02603f677dd5669f8ab3b41062340e.cloudfront.net (CloudFront)
+      - 1.1 94bd5e4f47540501369a53d4ae35d3b2.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DEN50-C2
       Alt-Svc:
       - h3=":443"; ma=86400
       X-Amz-Cf-Id:
-      - sibKuZQ98Cz76JcyDmQmnErYJUOJ1pglrKUBqVZYRsR_kzMx5WTl9A==
+      - 2Vv7AJgZGjol7qDu-xVm9VvMZrkijZQZ9imEA-paYwQh6S1VfFUSaw==
       Age:
-      - '15987'
+      - '17634'
     body:
       encoding: ASCII-8BIT
       string: '{"adult":false,"backdrop_path":"/oD9PdTC1AUvsE2j2bUn8tusDVcO.jpg","belongs_to_collection":null,"budget":35000000,"genres":[{"id":35,"name":"Comedy"},{"id":18,"name":"Drama"},{"id":10749,"name":"Romance"}],"homepage":"http://somethingborrowedmovie.warnerbros.com/","id":49022,"imdb_id":"tt0491152","original_language":"en","original_title":"Something
@@ -75,5 +75,5 @@ http_interactions:
         Films","origin_country":""}],"production_countries":[{"iso_3166_1":"US","name":"United
         States of America"}],"release_date":"2011-05-05","revenue":65090821,"runtime":112,"spoken_languages":[{"english_name":"English","iso_639_1":"en","name":"English"}],"status":"Released","tagline":"It''s
         a thin line between love and friendship.","title":"Something Borrowed","video":false,"vote_average":6.3,"vote_count":901}'
-  recorded_at: Thu, 08 Sep 2022 03:21:34 GMT
+  recorded_at: Thu, 08 Sep 2022 03:49:01 GMT
 recorded_with: VCR 6.1.0

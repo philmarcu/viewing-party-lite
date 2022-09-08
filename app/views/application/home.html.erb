@@ -1,7 +1,17 @@
 <% if current_user %>
   <p>Welcome back <%=  "#{current_user.name}"%></p>
   <%= link_to "Log Out", logout_path, method: :delete, local: true %>
+
+  <h4>User Email List <h4>
+  <% @users.each do |user| %>
+  <ol>
+    <div id="user-<%="#{user.id}"%>">
+      <li><%= user.email %></li>
+    </div>
+  </ol>
+  <% end %>
 <% else %>
   <%= button_to "Create a New User", register_path, method: :get %>
   <%= link_to "Log In", login_path, method: :get, local: true %>
+
 <% end %>

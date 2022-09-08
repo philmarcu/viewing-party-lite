@@ -10,6 +10,15 @@ RSpec.describe 'home page' do
     visit root_path
   end
 
+  def login(user)
+    visit root_path
+    click_on "Log In"
+    fill_in :email, with: user.email
+    fill_in :password, with: user.password
+    fill_in :password_confirmation, with: user.password
+    click_on "Log In"
+  end
+
   it 'can direct to create a new user' do
     click_button('Create a New User')
     expect(current_path).to eq('/register')
@@ -26,12 +35,7 @@ RSpec.describe 'home page' do
   end
 
   it 'has a log-out link for users' do
-    click_on "Log In"
-
-    fill_in :email, with: @user1.email
-    fill_in :password, with: @user1.password
-    fill_in :password_confirmation, with: @user1.password
-    click_on "Log In"
+   login(@user1)
     visit root_path
 
     expect(page).to have_content("Welcome back Jim Bob")

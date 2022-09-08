@@ -12,7 +12,9 @@ class ApplicationController < ActionController::Base
     current_user&.admin?
   end
 
-  def home; end
+  def home
+    @users = User.all
+  end
 end
 
 # --- future stub syntax for user tests 

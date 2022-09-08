@@ -7,16 +7,21 @@ Rails.application.routes.draw do
   root 'application#home'
   get '/register', to: 'users#new'
   post '/register', to: 'users#create'
-  get '/login', to: 'users#login_form'
-  post '/login', to: 'users#login'
-
+  get '/login', to: 'sessions#login_form'
+  post '/login', to: 'sessions#login'
+  delete 'logout', to: 'sessions#destroy'
+  
   resources :users, only: [:show] do
+    get '/movies/:movie_id/event/new', to: 'events#new'
+    # get '/dashboard', to: 'users#show'
     get '/discover', to: 'users#discover'
     post '/discover', to: 'movies#index'
-    get '/movies', to: 'movies#index'
-    resources :movies, only: [:show]
+    resources :movies, only: [:show, :index]
   end
 
-  get '/users/:user_id/movies/:movie_id/event/new', to: 'events#new'
   post '/users/:user_id', to: 'events#create'
+
+  namespace :admin do
+    get '/dashboard', to: 'dashboard#index'
+  end
 end

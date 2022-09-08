@@ -17,7 +17,9 @@ RSpec.describe 'register page page' do
       fill_in 'Password', with: 'pwd'
       fill_in 'Password Confirmation', with: 'pwd'
       click_on('Submit')
+
       expect(current_path).to eq("/users/#{User.last.id}")
+      expect(page).to have_content("Welcome Tyler")
     end
   end
 

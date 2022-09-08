@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
@@ -18,7 +16,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome #{new_user.name}"
       redirect_to "/users/#{User.last.id}"
     else
-      flash[:alert] = "Error - #{new_user.errors.full_messages}"
+      flash[:alert] = "Error - #{new_user.errors.full_messages.join(" , ")}"
       redirect_to "/users/#{User.last.id}"
     end
   end

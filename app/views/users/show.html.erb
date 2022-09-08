@@ -1,6 +1,7 @@
 <% if current_user %>
   <h3><%= "#{@user.name}'s Dashboard" %></h3>
-  
+  <%= link_to "Log Out", logout_path, method: :delete, local: true %>
+
   <%=  %>
   <%= button_to "Discover Movies", user_discover_path(@user.id), method: :get, local: true %>
 

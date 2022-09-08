@@ -22,6 +22,7 @@ RSpec.describe 'User Dashboard' do
       expect(page).to have_content("Jim Bob's Dashboard")
       expect(page).to_not have_content("Cary Berry's Dashboard")
       expect(page).to have_selector(:link_or_button, 'Discover Movies')
+      expect(page).to have_selector(:link_or_button, 'Log Out')
     end
 
     it 'can take you to the discover movie page from a users dashboard' do
@@ -50,6 +51,20 @@ RSpec.describe 'User Dashboard' do
       expect(page).to have_content('7:00PM')
       expect(page).to have_content("#{Date.today}")
     end
+  end
+
+  it 'can log a user out' do
+    user1 = User.create!(name: 'Jim Bob', email: 'jimb@viewingparty.com', password: "pwd")
+    curr_path = user_discover_path(user1.id)
+    
+    login(user1)
+    click_on "Log Out"
+
+    expect(page).to have_current_path(root_path)
+    expect(page).to_not have_current_path(curr_path)
+    expect(page).to_not have_content("Jim Bob's Dashboard")
+    expect(page).to have_link("Log In")
+    expect(page).to have_button("Create a New User")
   end
 end
 
